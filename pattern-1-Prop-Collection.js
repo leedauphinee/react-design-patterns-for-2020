@@ -10,18 +10,17 @@ export default function LayoutComponent({
   pageTitle,
   section
 }) {
+  const sections = {
+    'section-1': SubComponent1,
+    'section-2': SubComponent2,
+    'section-3': SubComponent3,
+  };
+  const SubComponent = sections[section];
+  
   return (
     <div className="App">
       <h1>{pageTitle}</h1>
-      {section === "secion-1" && (
-        <SubComponent1 styles={styles} copy={copy} data={data} />
-      )}
-      {section === "secion-2" && (
-        <SubComponent2 styles={styles} copy={copy} data={data} />
-      )}
-      {section === "secion-3" && (
-        <SubComponent3 styles={styles} copy={copy} data={data} />
-      )}
+      <SubComponent styles={styles} copy={copy} data={data} />
     </div>
   );
 }
@@ -34,12 +33,17 @@ export default function LayoutComponent({
   section,
   ...propCollection // Rest Operator
 }) {
+  const sections = {
+    'section-1': SubComponent1,
+    'section-2': SubComponent2,
+    'section-3': SubComponent3,
+  };
+  const SubComponent = sections[section];
+
   return (
     <div className="App">
       <h1>{pageTitle}</h1>
-      {section === "secion-1" && <SubComponent1 {...propCollection} />}
-      {section === "secion-2" && <SubComponent2 {...propCollection} />}
-      {section === "secion-3" && <SubComponent3 {...propCollection} />}
+      <SubComponent {...propCollection} />
     </div>
   );
 }
